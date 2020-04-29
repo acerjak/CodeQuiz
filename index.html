@@ -13,19 +13,20 @@
     <div class="container">
     <div class="row mt-3">
         <div class="col text-left">
-            <button class="highScore-btn btn hide" id="highScore-btn">High Scores</button>
         </div>
-        <div class="col text-right" id="timer">
+        <div class="col text-right timer card border-info mb-3" id="timer">
             <p id="timer"></p>
+            <p id="myScore"></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3"></div>      
         <div class="col-md-6 text-center">
-            <p id="winlose" style="font-size: 200px;"></p>
+            <br>
+            <br>
             <div id="question-container" class="hide">
-                <div id="question">Question</div>
-                <div id="answer-buttons" class="btn-grid">
+                <div id="question" class="questionDiv card border-info mb-3">Question</div>
+                <div id="answer-buttons" class="btn-grid card border-info mb-3">
                     <button class="btn">Answer 1</button>
                     <button class="btn">Answer 2</button>
                     <button class="btn">Answer 3</button>
@@ -36,24 +37,32 @@
             <div id="scoreBoard" class="hide">
                 <h1>You're Done!</h1>
                 <br>
-                <h3>Great job  \(￣▽￣)/ </h3>
+                <h2>Great job  \(￣▽￣)/ </h2>
                 <p>
                     <br>
-                    <h4>Scores:</h4>
-                    <ul id="scores">
-                        <li>1. Quinton</li>
-                        <li>2. Calum</li>
-                        <li>3. Amanda</li>
+                    <h3 id="myFinalScore">Your Score:</h3>
+                    <h3 id="finalScore"></h3>
+                    <h4>High Scores:</h4>
+                    <ul id="nameOfScores">
+                        <li id="element1">1. Quinton</li>
                     </ul>
-                    <label id="saveScoreBtn">Submit your name and score:</label>
-                    <input id="scoreInput"></input>
+                    <label id="saveScoreBtn">Submit your name to scoreboard:</label>
                     <br>
-                    <br>
-                    <button id="submitScore">Submit</button>
+                    <form id="scoreInput">
+                        <input
+                            type="text"
+                            username="username"
+                            id="username"
+                            placeholder="username"
+                            />
+                    <button type="submit" id="saveScoreBtn" class="btn disabled btn card text-white bg-info mb-3" onclick="saveHighScore(event)" >Submit</button>
+                </form>
                 </p>
             </div>
-                <button id="start-btn" class="start-btn btn">Start Quiz</button>
-                <button id="next-btn" class="next-btn btn hide">Next Question</button>
+            <br>
+            <br>
+                <button id="start-btn" class="start-btn btn card text-white bg-info mb-3">Start Quiz</button>
+                <button id="next-btn" class="next-btn btn hide card text-white bg-info mb-3">Next Question</button>
         </div>
         <div class="col-md-3"></div>
     </div>  

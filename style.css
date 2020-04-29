@@ -15,13 +15,19 @@
     opacity: 1;
     z-index: 2;
 } */
-.quiz-container{
+.question-container{
     position: relative;
     height: 200px;
     margin-top: 40px;
+    background-color: gainsboro;
+    border: 2px solid gray;
+} 
+#question {
+    background-color: gainsboro;
 }
 .btn-grid {
     display: grid;
+    background-color: gainsboro;
     grid-template-columns: repeat(2,auto);
     gap: 10px;
     margin: 20px 0;
@@ -43,5 +49,11 @@
 #scores {
     font-size: 20px;
     text-align: left;
-
+}
+.timer {
+    color:white;
+    background-color: red;
+    font-weight: bold;
+    font-size: larger;
+    margin-right: 50px;
 }

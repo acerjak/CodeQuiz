@@ -13,7 +13,7 @@ const scoreButton = document.getElementById('score-btn')
 let isOver = false
 score = 0
 //initial time in count down
-let count = 10
+let count = 60
 //time in seconds 
 const timer = document.getElementById('timer')
 //variable for question container
@@ -27,6 +27,7 @@ const questionContainerElement = document.getElementById
 const scoreElement = document.getElementById('scoreBoard')
 //variable for saving name/score
 const saveScoreBtn = document.getElementById('saveScoreBtn')
+
 
 //random order for questions
 let shuffledQuestions, currentQuestionIndex
@@ -48,6 +49,8 @@ function timerUpdater () {
         scoreElement.classList.remove('hide')
         //hide start button
         startButton.classList.add('hide');
+        //hide next button
+        nextButton.classList.add('hide');
 }}
 //GIVEN I am taking a code quiz // WHEN I click the start button
 //when clicked, present first question
@@ -122,21 +125,49 @@ function resetState(){
         (answerButtonsElement.firstChild)
     }
 }
-// WHEN I answer a question incorrectly// THEN time is subtracted from the clock
+//WHEN I answer a question incorrectly// THEN time is subtracted from the clock
 //check for correct
 function getScore (correct) {
+    localStorage.setItem('mostRecentScore', score);
     //which is a string, must call the string
     if (correct === "true") {
         //add one to the score
         score++
         //log score in console
         console.log(score)
+        //most recent score variable to store score
+    const mostRecentScore = JSON.parse(localStorage.getItem('mostRecentScore'));
+    //turn score back into number
+    parseInt('mostRecentScore')
+    //write most recent score at final score at end of game
+    document.getElementById('finalScore').innerHTML = mostRecentScore;
+    //write most recent score in space for final score at end of game, changing string into number
+    finalScore.innerText = mostRecentScore;
         //if not correct
     } else {
         //lose time on quiz
         count--
+    const mostRecentScore = JSON.parse(localStorage.getItem('mostRecentScore'));
+    //turn score back into number
+    //write most recent score at final score at end of game, changing string into number
+    document.getElementById('finalScore').innerHTML = parseInt(mostRecentScore);
     }
 }
+//define the username for score board
+const username = document.getElementById('username')
+//event listener for key up when entering username for scoreboard
+username.addEventListener('keyup', () => {
+    //log the input typed by user in console
+    console.log(username.value);
+    //enable the save button to submit name
+});
+//save high score to local storage
+saveHighScore = (e) => {
+    //confirm when button is clicked, reaches the console log
+    console.log("clicked the save button!")
+    //prevents browser from refreshing when form is submitted
+    e.preventDefault();
+};
 //set answer from event
 function selectAnswer (e) {
     //set const for everytime a button is selected
@@ -167,12 +198,10 @@ function selectAnswer (e) {
         scoreElement.classList.remove('hide')
         //hide start button
         startButton.classList.add('hide')
+        //hide next button
+        nextButton.classList.add('hide')
     }   
 }
-//render scoreboard name
-
-//when time runs out, stop game, display score and ask to send to scoreBoard to record name and score
-
 //set status of each button if correct or wrong by color
 function setStatusClass(element, correct) {
     //clear all class status
