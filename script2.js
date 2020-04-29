@@ -231,7 +231,7 @@ function clearStatusClass(element) {
 //array literal of Questions to make an object literal for each question and their answers
 const questions = [
     {
-        question: 'Where is the information of your answers being stored for this quiz?',
+        question: 'Where is the scoreboard rankings being stored for this quiz?',
         answers: [
             { text: 'GitHub', correct: false},
             { text: 'Session Storage', correct: false},
