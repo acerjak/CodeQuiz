@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda's Code Quiz</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+    <div class="row mt-3">
+        <div class="col text-left">
+            <button class="highScore-btn btn hide" id="highScore-btn">High Scores</button>
+        </div>
+        <div class="col text-right" id="timer">
+            <p id="timer"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>      
+        <div class="col-md-6 text-center">
+            <p id="winlose" style="font-size: 200px;"></p>
+            <div id="question-container" class="hide">
+                <div id="question">Question</div>
+                <div id="answer-buttons" class="btn-grid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>   
+            <div class="controls"></div>
+            <div id="scoreBoard" class="hide">
+                <h1>You're Done!</h1>
+                <br>
+                <h3>Great job  \(￣▽￣)/ </h3>
+                <p>
+                    <br>
+                    <label id="boardInput">Submit your score:</label>
+                    <input id="scoreInput"></input>
+                    <br>
+                    <button id="submitScore">Submit</button>
+                </p>
+            </div>
+                <button id="start-btn" class="start-btn btn">Start Quiz</button>
+                <button id="next-btn" class="next-btn btn hide">Next Question</button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>  
+    </div>
+<!-- links to BootStrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <script src="script2.js"></script>
+</body>
+</html>
