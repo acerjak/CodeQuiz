@@ -13,7 +13,7 @@ const scoreButton = document.getElementById('score-btn')
 let isOver = false
 score = 0
 //initial time in count down
-let count = 60
+let count = 30
 //time in seconds 
 const timer = document.getElementById('timer')
 //variable for question container
@@ -192,6 +192,8 @@ function selectAnswer (e) {
     } else {
         //quiz is over
         isOver = true
+        //stop timer
+        window.clearInterval(myTimer)
         //hide question container
         questionContainerElement.classList.add('hide')
         //show score board
