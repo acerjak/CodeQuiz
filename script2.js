@@ -1,6 +1,5 @@
 
-// WHEN the game is over
-// THEN I can save my initials and score
+
 
 //global constants
 //start button
@@ -133,41 +132,45 @@ function getScore (correct) {
     if (correct === "true") {
         //add one to the score
         score++
-        //log score in console
-        console.log(score)
-        //most recent score variable to store score
-    const mostRecentScore = JSON.parse(localStorage.getItem('mostRecentScore'));
-    //turn score back into number
-    parseInt('mostRecentScore')
-    //write most recent score at final score at end of game
-    document.getElementById('finalScore').innerHTML = mostRecentScore;
-    //write most recent score in space for final score at end of game, changing string into number
-    finalScore.innerText = mostRecentScore;
         //if not correct
     } else {
-        //lose time on quiz
-        count--
-    const mostRecentScore = JSON.parse(localStorage.getItem('mostRecentScore'));
+        //lose 15 seconds from time on quiz
+        count = count - 15
+    // const mostRecentScore = JSON.parse(localStorage.getItem('mostRecentScore'));
     //turn score back into number
-    //write most recent score at final score at end of game, changing string into number
-    document.getElementById('finalScore').innerHTML = parseInt(mostRecentScore);
     }
 }
 //define the username for score board
 const username = document.getElementById('username')
-//event listener for key up when entering username for scoreboard
-username.addEventListener('keyup', () => {
-    //log the input typed by user in console
-    console.log(username.value);
-    //enable the save button to submit name
-});
 //save high score to local storage
 saveHighScore = (e) => {
-    //confirm when button is clicked, reaches the console log
-    console.log("clicked the save button!")
     //prevents browser from refreshing when form is submitted
     e.preventDefault();
+// WHEN the game is over// THEN I can save my initials and score
+let ranking = JSON.parse(localStorage.getItem("quizBoard"))
+        if (!ranking){
+        ranking=[]
+        }
+// HERE WE ARE GOING TO HANDLE THE LOCALSTORAGE    {NAME:SOCORE}   {"IA":40, "PT":47}
+ranking.push({name: username.value, score: score})
+localStorage.setItem("quizBoard",JSON.stringify(ranking))
+//run ranking function
+showRanking(ranking)
 };
+//sorts ranks
+function showRanking(results){
+console.log("show: ", results)
+    //ranking will be put into ul to create li
+    document.getElementById("nameOfScores").innerHTML = ""
+    results.sort((a, b) => (a.score < b.score) ? 1 : -1)
+    for (let i=0; i< results.length; i++){
+        let obj = results[i]
+        //display ranking on page
+        let liDetail = document.createElement("li")
+        liDetail.innerText = obj.name + ": " + obj.score
+        document.getElementById("nameOfScores").append(liDetail)
+    }
+}
 //set answer from event
 function selectAnswer (e) {
     //set const for everytime a button is selected
@@ -202,6 +205,10 @@ function selectAnswer (e) {
         startButton.classList.add('hide')
         //hide next button
         nextButton.classList.add('hide')
+        score = count
+        console.log("Final score: ", score)
+    //write most recent score at final score at end of game, changing string into number
+    document.getElementById('finalScore').innerHTML = score;
     }   
 }
 //set status of each button if correct or wrong by color
