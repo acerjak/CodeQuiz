@@ -1,15 +1,6 @@
-//GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
+
 // WHEN the game is over
 // THEN I can save my initials and score
-
 
 //global constants
 //start button
@@ -34,26 +25,31 @@ const questionContainerElement = document.getElementById
  const answerButtonsElement = document.getElementById('answer-buttons')
 //variable for score board
 const scoreElement = document.getElementById('scoreBoard')
+//variable for saving name/score
+const saveScoreBtn = document.getElementById('saveScoreBtn')
 
 //random order for questions
 let shuffledQuestions, currentQuestionIndex
-
+//show timer on page
 document.getElementById('timer').innerHTML = `Time Remaining: ${Math.floor(count / 60)} minutes ${count % 60} seconds`
-
-//functions for timer
+// THEN a timer starts and I am presented with a question //functions for timer
 function timerUpdater () {
     count--
     //display timer on page
     document.getElementById('timer').innerHTML = `Time Remaining: ${Math.floor(count / 60)} minutes ${count % 60} seconds`
-    //when timer reaches 0
+    //when timer reaches 0 // THEN the game is over
     if (count <= 0) {
         //clear timer
         window.clearInterval(myTimer)
         console.log("time up")
-        //
-        count = 11
-        return;
+        //hide question container
+        questionContainerElement.classList.add('hide')
+        //show score board
+        scoreElement.classList.remove('hide')
+        //hide start button
+        startButton.classList.add('hide');
 }}
+//GIVEN I am taking a code quiz // WHEN I click the start button
 //when clicked, present first question
 startButton.addEventListener('click', () =>{
     console.log("start game")
@@ -80,10 +76,9 @@ function startGame () {
     //unhide the questioncontainer
     questionContainerElement.classList.remove('hide')
     //show next question
-    setNextQuestion()
-    //counting score
-    
+    setNextQuestion()  
 }
+// WHEN I answer a question// THEN I am presented with another question
 //set next question
 function setNextQuestion () {
     //quiz is not over
@@ -127,6 +122,7 @@ function resetState(){
         (answerButtonsElement.firstChild)
     }
 }
+// WHEN I answer a question incorrectly// THEN time is subtracted from the clock
 //check for correct
 function getScore (correct) {
     //which is a string, must call the string
@@ -173,28 +169,9 @@ function selectAnswer (e) {
         startButton.classList.add('hide')
     }   
 }
-
-//event listener for Score Board
-// document.getElementById('score-btn').addEventListener('click', (event) => {
-//     event.preventDefault()
-//     let userScore = {
-//         name: document.getElementById('enterName').value,
-//         score: document.getElementById(score).value,
-//         }
-//     localStorage.setItem('userScore', JSON.stringify(userScore))
-// })
-// if (localStorage.getItem('userScore')) {
-//     let userScore = JSON.parse(localStorage.getItem('userScore'))
-//     document.getElementById('userScore').innerHTML = `
-//     <h2>Name: ${userScore.name}</h2>
-//     <h2>Score: ${userScore.score}</h2>`
-// }
+//render scoreboard name
 
 //when time runs out, stop game, display score and ask to send to scoreBoard to record name and score
-// function ifOver() {
-//     time = 0
-
-// }
 
 //set status of each button if correct or wrong by color
 function setStatusClass(element, correct) {
