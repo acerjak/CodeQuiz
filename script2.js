@@ -13,7 +13,7 @@ const scoreButton = document.getElementById('score-btn')
 let isOver = false
 score = 0
 //initial time in count down
-let count = 30
+let count = 60
 //time in seconds 
 const timer = document.getElementById('timer')
 //variable for question container
