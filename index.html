@@ -48,18 +48,17 @@
                     </ul>
                     <label id="saveScoreBtn">Submit your name to scoreboard:</label>
                     <br>
-                    <form id="scoreInput" style="text-center">
+                    <form id="scoreInput" class="scoreForm">
                         <input
                             type="text"
                             username="username"
                             id="username"
                             placeholder="username"
                             />
-                    <button type="submit" id="saveScoreBtn" class="btn disabled btn card text-white bg-info mb-3" onclick="saveHighScore(event)" >Submit</button>
+                    <button type="submit" id="saveScoreBtn" class="save-btn card text-white bg-info mb-3 disabled " onclick="saveHighScore(event)" >Submit</button>
                 </form>
                 </p>
             </div>
-            <br>
             <br>
                 <button id="start-btn" class="start-btn btn card text-white bg-info mb-3">Start Quiz</button>
                 <button id="next-btn" class="next-btn btn hide card text-white bg-info mb-3">Next Question</button>
